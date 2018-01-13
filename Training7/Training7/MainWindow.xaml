@@ -1,0 +1,40 @@
+﻿<Window x:Class="Training7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Training7"
+        xmlns:vm="clr-namespace:Training7.ViewModel"
+        xmlns:views="clr-namespace:Training7.Views"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+        mc:Ignorable="d"
+        Title="Extended Training7 by Sascha Böck" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="199*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="5">
+            <Button Content="Overview" Command="{Binding OverviewBtnClick}" Margin="5"/>
+            <Button Content="Communication" Command="{Binding ComBtnClick}" Margin="5"/>
+            <Button Content="Data" Command="{Binding DataBtnClick}" Margin="5"/>   
+        </StackPanel>
+
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vm:OverviewVM}">
+                    <views:OverviewView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:ComVM}">
+                    <views:ComView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:DataVM}">
+                    <views:DataView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+
+    </Grid>
+</Window>

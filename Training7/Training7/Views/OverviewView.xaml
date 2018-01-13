@@ -1,0 +1,55 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Training7.Views"
+             xmlns:Converter="clr-namespace:Training7.Converter" x:Class="Training7.Views.OverviewView"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Converter:IntToBrushConverter x:Key="IntToBrushConverter"/>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Path="Overview" Source="{StaticResource Locator}"/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="18*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Blueprints:"/>
+        <ListBox ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}" Margin="5,28,5,126">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1"  Margin="5">
+            <TabPanel Margin="5">
+                <Label Content="Components"/>
+                <TextBox Text="{Binding SelectedOrder.Compnents}" Margin="4.6,0,-54.4,0" />
+            </TabPanel>
+            <TabPanel Margin="5">
+                <Label Content="Time"/>
+                <TextBox Text="{Binding SelectedOrder.Time}" Margin="47.8,0,-88.8,0"  />
+            </TabPanel>
+            <TabPanel Margin="5">
+                <Label Content="Amount"/>
+                <TextBox Text="{Binding SelectedOrder.Amount}" Margin="30.2,0,-78.4,0"  />
+            </TabPanel>
+            <TabPanel Margin="5">
+                <Label Content="Completion"/>
+                <TextBox Text="{Binding SelectedOrder.CompletionTime}" Margin="11,0,-68.8,0"  />
+            </TabPanel>
+            <TabPanel Margin="5">
+                <Label Content="Rating"/>
+                <Ellipse Width="15" Height="15" Margin="39.2,0,-39,0" Fill="{Binding SelectedOrder.Rating, Converter={StaticResource IntToBrushConverter}}" />
+            </TabPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
