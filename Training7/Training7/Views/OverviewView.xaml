@@ -48,6 +48,7 @@
             <TabPanel Margin="5">
                 <Label Content="Rating"/>
                 <Ellipse Width="15" Height="15" Margin="39.2,0,-39,0" Fill="{Binding SelectedOrder.Rating, Converter={StaticResource IntToBrushConverter}}" />
+                <Label Content="{Binding SelectedOrder.Rating}"/>
             </TabPanel>
         </StackPanel>
 

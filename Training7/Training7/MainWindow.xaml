@@ -18,7 +18,7 @@
         <StackPanel Margin="5">
             <Button Content="Overview" Command="{Binding OverviewBtnClick}" Margin="5"/>
             <Button Content="Communication" Command="{Binding ComBtnClick}" Margin="5"/>
-            <Button Content="Data" Command="{Binding DataBtnClick}" Margin="5"/>   
+            <!-- <Button Content="Data" Command="{Binding DataBtnClick}" Margin="5"/>   -->
         </StackPanel>
 
 

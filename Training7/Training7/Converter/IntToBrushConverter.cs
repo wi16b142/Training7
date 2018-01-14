@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
@@ -20,13 +16,14 @@ namespace Training7.Converter
         {
             int number = (int) value;
 
-            if(number == 5)
+
+            if(number >= 5)
             {
                 return green;
-            }else if(number == 3)
+            }else if(number >= 3)
             {
                 return yellow;
-            }else if(number ==2 || number == 0)
+            }else if(number >=1 || number == 0)
             {
                 return red;
             }

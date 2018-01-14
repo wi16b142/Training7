@@ -13,28 +13,49 @@ namespace Training7.ViewModel
         private string name;
         private int amount;
         private DateTime time;
-        private string completionTime;
+        private string completionTimeString;
+        private DateTime completionTime;
         private int rating;
 
         public OrderVM(string name, string completionTime, int amount, string compnents)
         {
-            CompletionTime = completionTime;
+            completionTimeString = completionTime;
             Amount = amount;
             Compnents = compnents;
             Time = DateTime.Now;
             Name = name;
+            ConvertCompletionTimeStringToDateTime();
             CalcRating();
 
         }
 
         public OrderVM()
         {
+
+        }
+
+        private void ConvertCompletionTimeStringToDateTime()
+        {
+            int hour, min;
+            TimeSpan tempTs;
+
+            hour = int.Parse(completionTimeString.Split(':')[0]);
+            min = int.Parse(completionTimeString.Split(':')[1]);
+            tempTs = new TimeSpan(hour, min, 0);
+            completionTime = DateTime.Now;
+            completionTime = completionTime.Date + tempTs;
         }
 
         private void CalcRating()
         {
-            Rating = 2;
-            //calc and set rating
+            TimeSpan ts = completionTime - time;
+
+            Rating = 0;
+
+            if (ts.Hours >= 1)
+            {
+                Rating = ts.Hours; 
+            }
         }
 
         public string Name
@@ -48,14 +69,6 @@ namespace Training7.ViewModel
             get { return rating; }
             set { rating = value; }
         }
-
-
-        public string CompletionTime
-        {
-            get { return completionTime; }
-            set { completionTime = value; }
-        }
-
 
         public DateTime Time
         {
@@ -77,6 +90,6 @@ namespace Training7.ViewModel
             set { components = value; }
         }
 
-
+        public DateTime CompletionTime { get => completionTime; set => completionTime = value; }
     }
 }

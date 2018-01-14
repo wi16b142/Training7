@@ -33,19 +33,6 @@ namespace Training7.ViewModel
             server = new Server(UpdateGui, UpdateClient);
             Clients = new ObservableCollection<ClientVM>();
 
-            Clients.Add(new ClientVM("test1"));
-            Clients[Clients.Count - 1].Orders.Add("order1");
-            Clients[Clients.Count - 1].Orders.Add("order2");
-            Clients[Clients.Count - 1].Orders.Add("order3");
-            Clients.Add(new ClientVM("test2"));
-            Clients[Clients.Count - 1].Orders.Add("order1");
-            Clients[Clients.Count - 1].Orders.Add("order2");
-            Clients[Clients.Count - 1].Orders.Add("order3");
-            Clients.Add(new ClientVM("test3"));
-            Clients[Clients.Count - 1].Orders.Add("order1");
-            Clients[Clients.Count - 1].Orders.Add("order2");
-            Clients[Clients.Count - 1].Orders.Add("order3");
-
             DropBtnClick = new RelayCommand<ClientVM>((p)=> 
             {
                 throw new NotImplementedException();
